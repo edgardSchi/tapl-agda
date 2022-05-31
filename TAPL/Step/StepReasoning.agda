@@ -1,5 +1,5 @@
 module TAPL.Step.StepReasoning (Term : Set) (_⟶_ : Term → Term → Set) where
-open import TAPL.Step.Step Term (_⟶_)
+open import TAPL.Step.StepDefinition Term (_⟶_)
 
 infix 1 ↠begin_
 infix 2 _↠⟨_⟩_
