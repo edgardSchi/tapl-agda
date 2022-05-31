@@ -35,4 +35,7 @@ $$
 
 The following theorems and properties are proven:
 - Theorem 3.5.4: Determincay of one-step evaluation
+- Theorem 3.5.7: Every value is in normal form
+- Theorem 3.5.8: If $t$ is in normal form, then $t$ is a value
 - Theorem 3.5.11: Uniqueness of normal forms
+- Theorem 3.5.12: Termination of evaluation
