@@ -3,6 +3,8 @@ module TAPL.Chapter9.Simply-Typed-Lambda where
 open import Data.String using (String; _≈?_; _≟_)
 open import Relation.Binary.PropositionalEquality using (_≡_; _≢_; refl)
 open import Relation.Nullary.Decidable using (False; toWitnessFalse)
+open import Relation.Nullary using (¬_)
+open import Data.Empty using (⊥-elim)
 open import Data.Product
 open import Data.Sum
 
@@ -195,13 +197,23 @@ progress .{(_ · _)} (T-APP {t₁ = t₁} {t₂ = t₂} {T₁ = T₁} {T₂ = T�
 -- Permutation
 -- TODO
 
+∈→⊢ : ∀ {t} → t ∶ T ∈ Γ → Γ ⊢ ` t ∶ T
+∈→⊢ t = T-VAR t
+
 -- Lemma 9.3.7
 -- Weakening
--- TODO
+weakening : ∀ {t x S U} → Γ ⊢ t ∶ T → ¬ (x ∶ U ∈ Γ) → Γ , x ∶ S ⊢ t ∶ T
+weakening T-TRUE _ = T-TRUE
+weakening T-FALSE _ = T-FALSE
+weakening (T-IF type type₁ type₂) x = T-IF (weakening type x) (weakening type₁ x) (weakening type₂ x)
+weakening (T-VAR var) x = {!!}
+weakening (T-ABS type) x = {!!}
+weakening (T-APP type type₁) x = T-APP (weakening type x) (weakening type₁ x)
 
 -- Lemma 9.3.8
 -- Perservation of types under subsitution
--- TODO
+sub-preservation : ∀ {t x s S} → Γ , x ∶ S ⊢ t ∶ T → Γ ⊢ s ∶ S → Γ ⊢ [ x ↦ s ] t ∶ T
+sub-preservation t s = {!!}
 
 -- Theorem 9.3.9
 -- Preservation
